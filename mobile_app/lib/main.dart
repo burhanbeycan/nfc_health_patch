@@ -14,11 +14,22 @@ class NfcHealthPatchApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final base = ThemeData(
+      colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF0E7490)),
+      useMaterial3: true,
+    );
+
     return MaterialApp(
       title: 'NFC Health Patch',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-        useMaterial3: true,
+      theme: base.copyWith(
+        scaffoldBackgroundColor: const Color(0xFFF4F8FB),
+        cardTheme: const CardThemeData(
+          elevation: 0,
+          margin: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(18)),
+          ),
+        ),
       ),
       home: const AppShell(),
       debugShowCheckedModeBanner: false,
@@ -56,8 +67,14 @@ class _AppShellState extends State<AppShell> {
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
           NavigationDestination(icon: Icon(Icons.favorite_border), label: 'ECG'),
-          NavigationDestination(icon: Icon(Icons.science_outlined), label: 'Biomarkers'),
-          NavigationDestination(icon: Icon(Icons.insights_outlined), label: 'Predictions'),
+          NavigationDestination(
+            icon: Icon(Icons.science_outlined),
+            label: 'Biomarkers',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.insights_outlined),
+            label: 'Predictions',
+          ),
           NavigationDestination(icon: Icon(Icons.share_outlined), label: 'Share'),
         ],
       ),
